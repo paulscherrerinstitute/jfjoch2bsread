@@ -5,8 +5,7 @@ import time
 import cbor2
 import numpy as np
 import zmq
-from bsread import PUSH
-from bsread.sender import CONNECT, Sender
+from bsread import CONNECT, PUSH, Sender
 from dectris.compression import decompress
 
 
