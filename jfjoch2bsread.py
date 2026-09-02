@@ -82,6 +82,11 @@ def transform_jfjoch2bsread_metadata(message):
         for key, value in indexing_unit_cell.items():
             message["indexing_unit_cell:" + key] = value
 
+    if "lattice_type" in message:
+        lattice_type = message.pop("lattice_type")
+        for key, value in lattice_type.items():
+            message["lattice_type:" + key] = value
+
     # bsread needs a consistent shape for lists, so pad them to a fixed length, keep the original
     # length in a separate "az_int_profile_len" field
     if "az_int_profile" in message:
