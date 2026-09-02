@@ -141,9 +141,13 @@ def main():
 
             # catch all nested dictionaries and remove them
             keys_to_del = []
+            previous = None
             for key, val in message2send.items():
                 if isinstance(val, dict):
-                    print(key, val)
+                    current = (key, val)
+                    if current != previous:
+                        print(key, val)
+                        previous = current
                     keys_to_del.append(key)
 
             for key in keys_to_del:
