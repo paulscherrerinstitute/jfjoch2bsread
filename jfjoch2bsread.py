@@ -126,7 +126,8 @@ def main():
         if zmq_socket not in events:
             continue
 
-        message_raw = zmq_socket.recv(flags=0, copy=False, track=False)
+        # convert from zmq.Frame to bytes with copy=True
+        message_raw = zmq_socket.recv(flags=0, copy=True, track=False)
         message = cbor2.loads(message_raw, tag_hook=tag_hook)
 
         if message["type"] != "metadata":
